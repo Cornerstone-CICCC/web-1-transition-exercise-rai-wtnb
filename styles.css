@@ -1,0 +1,95 @@
+.demo {
+  position: relative;
+  width: min(90vw, 900px);
+  height: min(70vh, 520px);
+  border-radius: 16px;
+  background: radial-gradient(
+    1200px 1200px at 10% 10%,
+    #1b2440 0%,
+    #0f1630 50%,
+    #0b1020 100%
+  );
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  overflow: hidden;
+}
+.circle {
+  --size: 96px;
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: #ffd54a;
+  box-shadow: 0 12px 25px rgba(255, 213, 74, 0.35),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  top: 16px;
+  left: 16px;
+  transition: opacity 220ms ease, transform 220ms ease;
+  animation: orbit-edges 8s linear infinite;
+}
+.circle:hover {
+  opacity: 0;
+}
+@keyframes orbit-edges {
+  0% {
+    top: 16px;
+    left: 16px;
+  }
+  25% {
+    top: 16px;
+    left: calc(100% - var(--size) - 16px);
+  }
+  50% {
+    top: calc(100% - var(--size) - 16px);
+    left: calc(100% - var(--size) - 16px);
+  }
+  75% {
+    top: calc(100% - var(--size) - 16px);
+    left: 16px;
+  }
+  100% {
+    top: 16px;
+    left: 16px;
+  }
+}
+.loading {
+  position: absolute;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  width: min(80%, 560px);
+}
+.loading__track {
+  width: 100%;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+}
+.loading__bar {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #4a9eff, #66ffcc);
+  box-shadow: 0 6px 12px rgba(74, 158, 255, 0.25);
+  animation: fill-left-to-right 3s ease-in-out infinite;
+}
+@keyframes fill-left-to-right {
+  0% {
+    width: 0;
+  }
+  60% {
+    width: 100%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.loading__label {
+  margin: 10px 6px 0;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+  opacity: 0.8;
+}
